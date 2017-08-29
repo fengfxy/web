@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+	
+    <context-param>
+        <param-name>logTarget</param-name>
+        <param-value>Profxy2017</param-value>
+    </context-param>
+
+
+    <context-param>
+        <param-name>from</param-name>
+        <param-value>1721023048@qq.com</param-value>
+    </context-param>
+    <context-param>
+        <param-name>fromName</param-name>
+        <param-value>冯问系统</param-value>
+    </context-param>
+    <context-param>
+        <param-name>pwd</param-name>
+        <param-value>yphhgcrnoqiyedeg</param-value>
+    </context-param>
+    <context-param>
+        <param-name>timelimit</param-name>
+        <param-value>2</param-value>
+    </context-param>
+    <context-param>
+        <param-name>host</param-name>
+        <param-value>smtp.qq.com</param-value>
+    </context-param>
+    <context-param>
+        <param-name>ssl</param-name>
+        <param-value>true</param-value>
+    </context-param>
+    <context-param>
+        <param-name>sslSmtpPort</param-name>
+        <param-value>465</param-value>
+    </context-param>
+</web-app>

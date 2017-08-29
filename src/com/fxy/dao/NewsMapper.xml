@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fxy.dao.NewsMapper">
+	<resultMap id="BaseResultMap" type="com.fxy.beans.News">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="title" property="title" jdbcType="VARCHAR" />
+		<result column="author" property="author" jdbcType="VARCHAR" />
+		<result column="photo_a" property="photoA" jdbcType="VARCHAR" />
+		<result column="photo_b" property="photoB" jdbcType="VARCHAR" />
+		<result column="photo_c" property="photoC" jdbcType="VARCHAR" />
+		<result column="st" property="st" jdbcType="VARCHAR" />
+		<result column="start_info" property="startInfo" jdbcType="VARCHAR" />
+
+		<association property="newsType" javaType="com.fxy.beans.NewsType">
+			<id column="news_type_id" property="id" jdbcType="INTEGER" />
+			<result column="name" property="name" jdbcType="VARCHAR" />
+		</association>
+	</resultMap>
+
+
+	<select id="selectByExample" resultMap="BaseResultMap"
+		parameterType="com.fxy.beans.News">
+		SELECT
+		news.id,
+		news.title,
+		news.author,
+		news.photo_a,
+		news.photo_b,
+		news.photo_c,
+		news.st,
+		news.news_type_id,
+		news.start_info,
+		news_type.`name`
+		FROM news, news_type 
+		where news_type.id = news.news_type_id
+	</select>
+	
+	<select id="selectByTypeCount" resultType="java.lang.Integer"
+		parameterType="com.fxy.beans.NewsType">
+		SELECT
+		count(*)
+		FROM news, news_type 
+		where news_type.id = news.news_type_id 
+		and news.news_type_id=#{id}
+	</select>
+	
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		SELECT
+		news.id,
+		news.title,
+		news.author,
+		news.photo_a,
+		news.photo_b,
+		news.photo_c,
+		news.st,
+		news.news_type_id,
+		news.start_info,
+		news_type.`name`
+		FROM news, news_type 
+		where news_type.id = news.news_type_id 
+		and news.id=#{id}
+	</select>
+
+
+	<select id="selectByType" resultMap="BaseResultMap"
+		parameterType="com.fxy.beans.NewsType">
+		SELECT
+		news.id,
+		news.title,
+		news.author,
+		news.photo_a,
+		news.photo_b,
+		news.photo_c,
+		news.st,
+		news.news_type_id,
+		news.start_info,
+		news_type.`name`
+		FROM news, news_type 
+		where news_type.id = news.news_type_id 
+		and news.news_type_id=#{id}
+		
+	</select>
+	
+	
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from news
+		where id = #{id,jdbcType=INTEGER}
+	</delete>
+
+
+	<insert id="insert" parameterType="com.fxy.beans.News">
+		insert into news (id, title,
+		author,
+		photo_a, photo_b, photo_c,
+		st, news_type_id, start_info
+		)
+		values
+		(#{id,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR},
+		#{author,jdbcType=VARCHAR},
+		#{photoA,jdbcType=VARCHAR},
+		#{photoB,jdbcType=VARCHAR}, #{photoC,jdbcType=VARCHAR},
+		#{st,jdbcType=VARCHAR}, #{newsType.id,jdbcType=INTEGER},
+		#{startInfo,jdbcType=VARCHAR}
+		)
+	</insert>
+
+
+	<update id="updateByPrimaryKey" parameterType="com.fxy.beans.News">
+		update news
+		set
+		title = #{title,jdbcType=VARCHAR},
+		author = #{author,jdbcType=VARCHAR},
+		photo_a = #{photoA,jdbcType=VARCHAR},
+		photo_b =
+		#{photoB,jdbcType=VARCHAR},
+		photo_c = #{photoC,jdbcType=VARCHAR},
+		st =
+		#{st,jdbcType=VARCHAR},
+		news_type_id = #{newsType.id,jdbcType=INTEGER},
+		start_info = #{startInfo,jdbcType=VARCHAR}
+		where id =
+		#{id,jdbcType=INTEGER}
+	</update>
+
+
+</mapper>
