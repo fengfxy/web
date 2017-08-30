@@ -12,7 +12,8 @@ public interface UsersMapper {
 
     List<Users> selectByExample();
     Users selectByPrimaryKey(Integer id);
-
+    Users selectByEmail(String email);
+    Users selectByUserName(String userName);
     int updateByPrimaryKey(Users record);
     
     ArrayList<Users> selectByUsernameAndPassword(Users record);

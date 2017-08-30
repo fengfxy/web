@@ -10,11 +10,35 @@ import com.fxy.dao.UsersMapper;
 import com.fxy.util.mybatis.MyBatisUtil;
 
 public class UsersServices {
-	public ArrayList<Users> findAll(){
+	public ArrayList<Users> findByAll(){
 		ArrayList<Users> result=null;
 		
 		
 		
+		
+		return result;
+		
+	}
+	
+	public Users findByEmail(String email) throws IOException{
+		Users result=null;
+		SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession();
+		UsersMapper usersMapper=sqlSession.getMapper(UsersMapper.class);
+		result=usersMapper.selectByEmail(email);
+		sqlSession.close();
+		
+		return result;
+		
+	}
+	
+	public boolean findByUserName(String userName) throws IOException{
+		boolean result=true;
+		SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession();
+		UsersMapper usersMapper=sqlSession.getMapper(UsersMapper.class);
+		if(usersMapper.selectByUserName(userName)==null){
+			result=false;
+		}
+		sqlSession.close();
 		
 		return result;
 		
