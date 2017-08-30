@@ -1,6 +1,7 @@
 package com.fxy.dao;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import com.fxy.beans.Users;
 
@@ -9,11 +10,8 @@ public interface UsersMapper {
 
     int insert(Users record);
 
-    int insertSelective(Users record);
-
+    List<Users> selectByExample();
     Users selectByPrimaryKey(Integer id);
-
-    int updateByPrimaryKeySelective(Users record);
 
     int updateByPrimaryKey(Users record);
     

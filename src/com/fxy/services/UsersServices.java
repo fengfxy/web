@@ -32,6 +32,32 @@ public class UsersServices {
 		return result;
 		
 	}
+	
+	public boolean edit(Users user) throws IOException{
+		boolean result=false;
+		SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession(false);
+		UsersMapper usersMapper=sqlSession.getMapper(UsersMapper.class);
+		if(usersMapper.updateByPrimaryKey(user)>0){
+			result=true;
+		}
+		sqlSession.commit();
+		sqlSession.close();
+		return result;
+		
+	}
+	
+	public boolean remove(Integer userId) throws IOException{
+		boolean result=false;
+		SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession(false);
+		UsersMapper usersMapper=sqlSession.getMapper(UsersMapper.class);
+		if(usersMapper.deleteByPrimaryKey(userId)>0){
+			result=true;
+		}
+		sqlSession.commit();
+		sqlSession.close();
+		return result;
+		
+	}
 }
 
 	

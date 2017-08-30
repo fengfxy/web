@@ -25,6 +25,7 @@ public class NewsTypeSelectServlet extends HttpServlet{
 		try {
 			ArrayList<NewsType> NewsTypes = newsTypeServices.findAll();
 			req.setAttribute("NewsTypes", NewsTypes);
+			req.getSession().setAttribute("menu", 1);
 			req.getRequestDispatcher("NewsTypeSelect.jsp").forward(req, resp);
 		} catch (Exception e) {
 			e.printStackTrace();

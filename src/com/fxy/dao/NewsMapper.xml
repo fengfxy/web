@@ -32,7 +32,8 @@
 		news.start_info,
 		news_type.`name`
 		FROM news, news_type 
-		where news_type.id = news.news_type_id
+		where news_type.id = news.news_type_id 
+		order by st desc
 	</select>
 	
 	<select id="selectByTypeCount" resultType="java.lang.Integer"
