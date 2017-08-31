@@ -30,6 +30,7 @@
 		<mapper resource="com/fxy/dao/AdminMapper.xml" />
 		<mapper resource="com/fxy/dao/NewsTypeMapper.xml" />
 		<mapper resource="com/fxy/dao/NewsMapper.xml" />
+		<mapper resource="com/fxy/dao/NewsInfoMapper.xml" />
 	</mappers>
 
 

@@ -126,7 +126,7 @@
 					<td style="vertical-align: middle">${item.author }</td>
 					<td style="vertical-align: middle">${item.st }</td>
 					<td style="vertical-align: middle">${item.newsType.name }</td>
-					<td style="vertical-align: middle">${item.photoA }</td>
+					<td style="vertical-align: middle"><img src="<%=basePath%>admin/upload/${item.photoA }" style="width: 134px;height: 90px;vertical-align: bottom"  class="img-thumbnail"></td>
 					<td style="vertical-align: middle">${item.startInfo }</td>
 
 					<td><a
@@ -194,7 +194,7 @@
 	}
 
 	function add() {
-		window.location = "<%=basePath%>admin/newsAdd.jsp";
+		window.location = "<%=basePath%>admin/NewsAddBeforServlet.action";
 	}
 
 

@@ -28,6 +28,11 @@ function getTime() {
     return year + "年" + mouth + "月" + day + "日" + "  " + hours + ":" + minutes + ":" + seconds + "  " + week;
 
 };
+$(function(){
+	
+	$('input').attr('autocomplete', 'off');
+	
+});
 
 
 $(function () {

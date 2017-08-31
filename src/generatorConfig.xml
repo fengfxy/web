@@ -58,13 +58,16 @@
 			enableUpdateByExample="false" enableDeleteByExample="false"
 			enableSelectByExample="true" selectByExampleQueryId="false">
 		</table>
-		-->
+		
 		<table tableName="news" enableCountByExample="false"
 			enableUpdateByExample="false" enableDeleteByExample="false"
 			enableSelectByExample="true" selectByExampleQueryId="false">
 		</table>
-		
-		
+		-->
+		<table tableName="news_info" enableCountByExample="false"
+			enableUpdateByExample="false" enableDeleteByExample="false"
+			enableSelectByExample="true" selectByExampleQueryId="false">
+		</table>
 		
 	</context>
 

@@ -90,7 +90,7 @@
 	</delete>
 
 
-	<insert id="insert" parameterType="com.fxy.beans.News">
+	<insert id="insert" parameterType="com.fxy.beans.News" useGeneratedKeys="true" keyProperty="id">
 		insert into news (id, title,
 		author,
 		photo_a, photo_b, photo_c,
