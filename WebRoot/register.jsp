@@ -143,10 +143,12 @@
 				}else if($('#inputPassword1').val()!=$('#inputPassword2').val()){
 						$('#mess').text('两次输入的密码不一致');
 						return false;
-					  }else if($('#mess').val()!="欢迎注册"){
+					  }else/*  if($('#mess').val()!="欢迎注册"){
 						$('#mess').text('验证码输入有误');
 						return false;
-					  }
+					  }else{
+					  	return true;
+					  } */
 			});
 
 		});

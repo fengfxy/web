@@ -26,8 +26,9 @@ public class VerifyUserEmailServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String uesrVerification = req.getParameter("verification");
 		String messStr="";
+		Users user=null;
 		try {
-			Users user = usersServices.findByVerification(uesrVerification);
+			user = usersServices.findByVerification(uesrVerification);
 			if(user!=null){
 				if(uesrVerification==null||!uesrVerification.equals(user.getVerification())){
 					messStr="该页面被篡改或者链接已失效，请重新验证";
@@ -43,6 +44,7 @@ public class VerifyUserEmailServlet extends HttpServlet {
 			messStr="服务器的问题，账号未激活，请及时联系客服";
 		}
 		if(messStr.equals("验证通过")){
+			req.getSession().setAttribute("user", user);
 			resp.sendRedirect(PathUtil.getBasePath(req, "ReSetUserPassWord.jsp"));
 		}else{
 			req.getSession().setAttribute("mess", messStr);

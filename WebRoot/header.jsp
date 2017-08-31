@@ -29,17 +29,17 @@
 			<ul class="nav navbar-nav navbar-right">
 
 				<c:choose>
-					<c:when test="${sessionScope.Users!=null }">
-						<li><a>当前登录用户：${sessionScope.Users.username}</a> </li>
-						<li><a href="<%=basePath%>LogoutServlet.action">退出登录</a></li>
-						<li><a href="register.jsp">注册</a></li>
-					</c:when>
 
 					<c:when test="${sessionScope.Users==null }">
 						<li><a href="login.jsp">登录</a></li>
 						<li><a href="register.jsp">注册</a></li>
 					</c:when>
+					<c:when test="${sessionScope.Users!=null }">
+						<li> <a>欢迎：${sessionScope.Users.username }</a> </li>
+						<li><a href="#">管理</a></li>
+						<li><a href="<%=basePath %>LogoutServlet.action">注销</a></li>
 
+					</c:when>
 				</c:choose>
 
 			</ul>

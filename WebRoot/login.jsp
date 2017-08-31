@@ -50,7 +50,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 										<a href="register.jsp" class="btn btn-default">注册</a>
 									</div>
 									<div class="col-xs-3">
-										<a href="" class="btn btn-default">忘记密码</a>
+										<a href="<%=basePath %>ForgetUserPassWord.jsp" class="btn btn-default">忘记密码</a>
 									</div>
 								</div>
 

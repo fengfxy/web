@@ -20,7 +20,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="panel panel-primary login">
 				<div class="panel-heading" align="center">密码重置</div>
 				<div class="panel-body">
-					<form class="form-horizontal" action="<%=basePath %>/servlet/ResetUserPassWordServlet.action" method="post">
+					<form class="form-horizontal" action="<%=basePath %>/servlet/VerifyUserEmailServlet.action" method="post">
 						<div class="form-group">
 							<label for="inputText1" class="col-xs-3 control-label">用户名:</label>
 							<div class="col-xs-5">

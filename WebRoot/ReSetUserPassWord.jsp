@@ -19,28 +19,41 @@
 
 	<div class="centent login-wrap">
 
+			<div class="row">
+				<div class="col-xs-12" align="center">
+					<img src="<%=basePath%>img/sess.png" alt="..." class="img-rounded">
+					<h3>验证成功</h3>
+				</div>
+				
+			</div>
 		<div class="panel panel-primary login">
+			
 			<div class="panel-heading" align="center">重置密码</div>
 			<div class="panel-body">
 				<form class="form-horizontal" id="from1"
-					action="<%=basePath%>servlet/ResetUserPassWordServlet.action" method="post">
-					
+					action="<%=basePath%>servlet/ResetUserPassWordServlet.action"
+					method="post">
+
 					<div class="form-group">
 						<label class="col-xs-3 control-label">用户名:</label>
 						<div class="col-xs-5">
-							<input type="text" class="form-control "   value="${user.username }" disabled>
-							<input type="hidden" class="form-control "  name="userName"  value="${user.username }">
+							<input type="text" class="form-control "
+								value="${sessionScope.user.username }" disabled> <input
+								type="hidden" class="form-control " name="userName"
+								value="${sessionScope.user.username }">
 						</div>
 					</div>
-					
+
 					<div class="form-group">
 						<label class="col-xs-3 control-label">邮箱:</label>
 						<div class="col-xs-5">
-							<input type="text" class="form-control "   value="${user.email }" disabled>
-							<input type="hidden" class="form-control "  name="userEmail"  value="${user.email }">
+							<input type="text" class="form-control "
+								value="${sessionScope.user.email }" disabled> <input
+								type="hidden" class="form-control " name="userEmail"
+								value="${sessionScope.user.email }">
 						</div>
 					</div>
-					
+
 					<div class="form-group">
 						<label for="inputPassword1" class="col-xs-3 control-label">新密码:</label>
 						<div class="col-xs-5">
@@ -55,7 +68,7 @@
 								id="inputPassword2" placeholder="请确认新密码">
 						</div>
 					</div>
-					
+
 					<div class="form-group">
 						<label for="inputText3" class="col-xs-3 control-label">验证码:</label>
 						<div class="col-xs-5">
@@ -87,7 +100,9 @@
 			</div>
 			<div id="mess" class="panel-footer">FXY信息系统</div>
 		</div>
-
+		<%
+			request.getSession().removeAttribute("user");
+		%>
 	</div>
 	<jsp:include page="footer.jsp"></jsp:include>
 </body>
@@ -147,10 +162,10 @@
 				}else if($('#inputPassword1').val()!=$('#inputPassword2').val()){
 						$('#mess').text('两次输入的密码不一致');
 						return false;
-					  }else if($('#mess').val()!="FXY信息系统——重置密码"){
+					  }/* else if($('#mess').val()!="FXY信息系统——重置密码"){
 						$('#mess').text('验证码输入有误');
 						return false;
-					  }
+					  } */
 			});
 
 		});
