@@ -25,11 +25,11 @@ public class UsersActivateServlet extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		UsersServices usersServices=new UsersServices();
-		String uesrEmail = req.getParameter("verification");
+		String uesrVerification = req.getParameter("verification");
 		String verification = UUIDUtil.getUUID();
 		String messStr="";
 		try {
-			Users user = usersServices.findByEmail(uesrEmail);
+			Users user = usersServices.findByVerification(uesrVerification);
 			if(user!=null){
 				if(user.getState()!=0){
 					messStr="邮箱已被激活";
@@ -39,7 +39,7 @@ public class UsersActivateServlet extends HttpServlet{
 						usersServices.remove(user.getId());
 						messStr="该链接已失效";
 					}else{
-						if(user.getVerification()!=null||!user.getVerification().equals("")){
+						if(uesrVerification==null||!uesrVerification.equals(user.getVerification())){
 							messStr="该链接已失效，已被点击过一次";
 						}else{
 							user.setState(1);

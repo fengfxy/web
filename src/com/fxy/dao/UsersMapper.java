@@ -14,6 +14,7 @@ public interface UsersMapper {
     Users selectByPrimaryKey(Integer id);
     Users selectByEmail(String email);
     Users selectByUserName(String userName);
+    Users selectByVerification(String verification);
     int updateByPrimaryKey(Users record);
     
     ArrayList<Users> selectByUsernameAndPassword(Users record);

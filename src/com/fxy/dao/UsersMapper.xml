@@ -26,6 +26,13 @@
 		users.username=#{username}
 	</select>
 	
+	<select id="selectByVerification" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		SELECT * FROM users 
+		WHERE 
+		users.verification=#{verification}
+	</select>
+	
 	<select id="selectByEmail" resultMap="BaseResultMap"
 		parameterType="java.lang.String">
 		SELECT * FROM users

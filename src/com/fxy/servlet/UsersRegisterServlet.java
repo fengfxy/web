@@ -58,7 +58,7 @@ public class UsersRegisterServlet extends HttpServlet{
         Users user=new Users();
         Users temp=null;
         try {
-			if(usersServices.findByUserName(userName)){
+			if(usersServices.findByUserName(userName)!=null){
 				messStr="用户名已被注册";
 			}else{
 				temp = usersServices.findByEmail(userEmail);

@@ -23,7 +23,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
 
-	<div class="content">
+	<div class="centent">
 	
 	
 	<h1>${sessionScope.mess }</h1>

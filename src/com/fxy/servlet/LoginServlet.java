@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.fxy.beans.Users;
 import com.fxy.services.LoginServices;
+import com.fxy.util.encode.EncodeUtil;
 import com.fxy.util.log.LogUtil;
 import com.fxy.util.path.PathUtil;
 
@@ -26,7 +27,7 @@ public class LoginServlet extends HttpServlet {
 		String password = req.getParameter("password");
 		Users record = new Users();
 		record.setUsername(username);
-		record.setPassword(password);
+		record.setPassword(EncodeUtil.getMD5(password));
 		LoginServices loginServices = new LoginServices();
 		Users result;
 		try {

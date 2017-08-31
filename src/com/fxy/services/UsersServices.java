@@ -36,13 +36,22 @@ public class UsersServices {
 		
 	}
 	
-	public boolean findByUserName(String userName) throws IOException{
-		boolean result=true;
+	public Users findByVerification(String verification) throws IOException{
+		Users result=null;
 		SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession();
 		UsersMapper usersMapper=sqlSession.getMapper(UsersMapper.class);
-		if(usersMapper.selectByUserName(userName)==null){
-			result=false;
-		}
+		result=usersMapper.selectByVerification(verification);
+		sqlSession.close();
+		
+		return result;
+		
+	}
+	
+	public Users findByUserName(String userName) throws IOException{
+		Users result=null;
+		SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession();
+		UsersMapper usersMapper=sqlSession.getMapper(UsersMapper.class);
+		result=usersMapper.selectByUserName(userName);
 		sqlSession.close();
 		
 		return result;
