@@ -8,13 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.ibatis.session.SqlSession;
-
-import com.fxy.services.NewsTypeServices;
-import com.fxy.dao.NewsTypeMapper;
 import com.fxy.beans.AdminMess;
 import com.fxy.beans.NewsType;
-import com.fxy.util.mybatis.MyBatisUtil;
+import com.fxy.services.NewsTypeServices;
 import com.fxy.util.path.PathUtil;
 
 @WebServlet(

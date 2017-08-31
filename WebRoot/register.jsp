@@ -147,51 +147,6 @@
 
 		});
 
-	/* var userName = document.getElementById('inputText1');
-	var email = document.getElementById('inputText2');
-	var userPassWord = $('#inputPassword1').val();
-	var userPassWord2 = document.getElementById('inputPassword2');
-	var kaptcha = document.getElementById('inputText3');
-	var form = document.getElementById('from1');
-	form.onsubmit = function() {
-
-		if (userName.value == '' || userName.value == null) {
-			$('#mess').text('请输入用户名');
-			return false;
-		} else {
-
-			$('#mess').text('');
-		}
-		if (userPassWord == '' || userPassWord == null) {
-
-			$('#mess').text('请输入密码');
-			return false;
-		} else {
-			$('#mess').text('');
-		}
-		if(userPassWord!=userPassWord.value){
-			$('#mess').text('两次输入密码不一致');
-			return false;
-		}else {
-			$('#mess').text('');
-		}
-		
-		if (email.value == '' || email.value == null) {
-
-			$('#mess').text('请输入邮箱');
-			return false;
-		} else {
-			$('#mess').text('');
-		}
-
-		if (kaptcha.value == '' || kaptcha.value == null) {
-
-			$('#mess').text('请输入验证码');
-			return false;
-		} else {
-			$('#mess').text('');
-		}
-		
-	} */
+	
 	});
 </script>

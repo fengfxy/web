@@ -10,15 +10,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.mail.EmailException;
-
-import com.fxy.beans.AdminMess;
 import com.fxy.beans.Users;
 import com.fxy.services.UsersServices;
+import com.fxy.util.UUID.UUIDUtil;
 import com.fxy.util.encode.EncodeUtil;
 import com.fxy.util.kaptcha.KaptchaUtil;
-import com.fxy.util.mail.MailUtil;
-import com.fxy.util.mail.SendMailData;
 import com.fxy.util.path.PathUtil;
 
 @WebServlet(
@@ -71,7 +67,6 @@ public class UsersRegisterServlet extends HttpServlet{
 						messStr="邮箱已被注册";
 					}else{
 						Long st = Long.parseLong(temp.getSt());
-						
 						if (currentTime - st > (1000 * 60 * 60 * timeGap)) {
 							usersServices.remove(temp.getId());
 							messStr="注册";
@@ -92,37 +87,22 @@ public class UsersRegisterServlet extends HttpServlet{
         	req.getSession().setAttribute("mess", messStr);
 			resp.sendRedirect(PathUtil.getBasePath(req,"mess.jsp"));
         }else{
-        	SendMailData sendMailData =new SendMailData();
-    		sendMailData.setAddress(userEmail);
-    		sendMailData.setTitle("注册激活");
-    		sendMailData.setInfo("<p><h1>欢迎注册FXY新闻信息系统</h1></p>"
-    				+ "<p>点击下面“立即激活”按钮激活您的账号</p>"
-    				+ "<a type='button' href='http://www.baidu.com'>立即激活</a>");
-    		
-    		try {
-    			MailUtil.sendMail(sendMailData);
-    			user.setUsername(userName);
-    			user.setPassword(EncodeUtil.getMD5(userPassWord));
-    			user.setSt(String.valueOf(currentTime));
-    			user.setState(0);
-    			user.setEmail(userEmail);
-    			if(usersServices.add(user)){
-    				req.getSession().setAttribute("mess", "注册成功，请注意查收激活邮件");
-        			resp.sendRedirect(PathUtil.getBasePath(req,"mess.jsp"));
-    			}else{
-    				req.getSession().setAttribute("mess", "注册失败，插入数据出错");
-        			resp.sendRedirect(PathUtil.getBasePath(req,"mess.jsp"));
-    			}
-    			
-    		} catch (EmailException e) {
-    			e.printStackTrace();
-    			req.getSession().setAttribute("mess", "邮件发送异常，请检查邮箱是否正确");
-    			resp.sendRedirect(PathUtil.getBasePath(req,"mess.jsp"));
-    		}
-        	
+        	String verification = UUIDUtil.getUUID();
+        	user.setUsername(userName);
+        	user.setPassword(EncodeUtil.getMD5(userPassWord));
+        	user.setSt(String.valueOf(currentTime));
+        	user.setState(0);
+        	user.setEmail(userEmail);
+        	user.setVerification(verification);
+        	try {
+        		messStr = usersServices.add(user);
+			} catch (Exception e) {
+				e.printStackTrace();
+				messStr="服务器异常，请稍后重试";
+			}
+        	req.getSession().setAttribute("mess", messStr);
+			resp.sendRedirect(PathUtil.getBasePath(req,"mess.jsp"));
         }
-        
-        
 	}
 	
 }
