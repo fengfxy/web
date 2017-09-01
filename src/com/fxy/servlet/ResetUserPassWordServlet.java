@@ -26,9 +26,8 @@ public class ResetUserPassWordServlet extends HttpServlet {
         try {
 			user= usersServices.findByEmail(userEmail);
 			if(user!=null){
-				String verification = UUIDUtil.getUUID();
 				user.setPassword(EncodeUtil.getMD5(userPassWord));
-				user.setVerification(verification);
+				user.setVerification(UUIDUtil.getUUID());
 				try {
 					if(usersServices.edit(user)){
 						messStr="修改成功，请牢记该密码";

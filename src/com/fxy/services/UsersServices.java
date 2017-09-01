@@ -69,6 +69,7 @@ public class UsersServices {
 	    		sendMailData.setTitle("注册激活");
 	    		sendMailData.setInfo("<p><h1>欢迎注册FXY新闻信息系统</h1></p>"
 	    				+ "<p>点击下面“立即激活”按钮激活您的账号</p>"
+	    				+ "<p><h2 style='color: red;'>链接仅一次有效！</h2></p>"
 	    				+ "<a href='http://localhost:8080/Profxy2017/servlet/UsersActivateServlet.action?verification="
 	    				+user.getVerification()+"'>立即激活</a>");
 	    		try {

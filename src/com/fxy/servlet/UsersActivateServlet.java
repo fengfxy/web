@@ -53,7 +53,7 @@ public class UsersActivateServlet extends HttpServlet{
 					}
 				}
 			}else{
-				messStr="该账号未激活，该页面被篡改或者链接已失效，请及时联系客服";
+				messStr="激活失败，该页面被篡改或者链接已失效";
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
