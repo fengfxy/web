@@ -9,9 +9,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div class="container-fluid">
         <div class="navbar-header">
             <a class="navbar-brand">后台管理系统V1.0</a>
-            <a class="navbar-brand">联系方式:17727811307</a>
-            <a class="navbar-brand">QQ:2307800400</a>
-            <a class="navbar-brand">email:2307800400@qq.com</a>
+            <a class="navbar-brand">联系方式:17700778332</a>
+            <a class="navbar-brand">QQ:1721023048</a>
+            <a class="navbar-brand">email:fexiyu@qq.com</a>
 
         </div>
     </div><!-- /.container-fluid -->

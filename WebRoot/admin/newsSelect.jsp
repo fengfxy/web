@@ -57,18 +57,20 @@
 				<span class="glyphicon glyphicon-plus"></span>添加数据
 			</button>
 
-			<form action="<%=basePath%>admin/NewsQueryServlet.action"
-				method="post" class="form-inline">
+			<form action="<%=basePath%>admin/NewsQueryServlet.action" method="post" class="form-inline">
 				<div class="form-group">
-					<label> <input type="checkbox" name="c1" value="title">标题
-					</label><input type="text" name="title" class="form-control"
-						id="exampleInputName2" placeholder="输入标题">
+
+					<label> 标题
+					</label><input type="text" name="title" class="form-control" id="exampleInputName2"
+						placeholder="输入标题">
+
 				</div>
-				
 				<div class="form-group">
-					<label><input type="checkbox" name="c1" value="type">类型</label>
-					<select name="type" class="form-control">
+					<label>类型</label> <select
+					name="type"	class="form-control" >
+					<option value="-1">请选择</option>
 						<c:forEach var="item" items="${newsTypes }">
+						
 							<option value="${item.id }">${item.name }</option>
 						</c:forEach>
 					</select>
@@ -76,7 +78,7 @@
 
 
 				<div class="form-group">
-					<label><input type="checkbox" name="c1" value="st">日期：</label>
+					<label>日期：</label>
 					<div class='input-group date' id='datetimepicker1'>
 						<input type='text' name="stStart" class="form-control" /> <span
 							class="input-group-addon"> <span
@@ -122,7 +124,7 @@
 			<c:forEach var="item" items="${news }">
 				<tr>
 					<td style="vertical-align: middle">${item.id }</td>
-					<td style="vertical-align: middle">${item.title }</td>
+					<td style="vertical-align: middle"><a href="<%=basePath%>admin/NewsInfoSelectServlet.action?id=${item.id }">${item.title }</a></td>
 					<td style="vertical-align: middle">${item.author }</td>
 					<td style="vertical-align: middle">${item.st }</td>
 					<td style="vertical-align: middle">${item.newsType.name }</td>
@@ -130,7 +132,7 @@
 					<td style="vertical-align: middle">${item.startInfo }</td>
 
 					<td><a
-						href="<%=basePath%>admin/NewsEditBeforeServlet.action?id=${item.id }"
+						href="<%=basePath%>admin/NewsEditBeforServlet.action?id=${item.id }"
 						class="btn btn-warning" type="button"> <span
 							class="glyphicon glyphicon-pencil"></span>编辑数据
 					</a>

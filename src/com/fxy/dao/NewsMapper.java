@@ -1,6 +1,7 @@
 package com.fxy.dao;
 
 import com.fxy.beans.News;
+import com.fxy.beans.NewsQuery;
 import com.fxy.beans.NewsType;
 
 import java.util.List;
@@ -19,4 +20,7 @@ public interface NewsMapper {
     News selectByPrimaryKey(Integer id);
 
     int updateByPrimaryKey(News record);
+	List<News> selectByQuery(NewsQuery newsQuery);
+	int updateByPhoto(News record);
+	
 }

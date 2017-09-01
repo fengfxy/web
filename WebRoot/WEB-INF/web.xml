@@ -11,7 +11,7 @@
 
     <context-param>
         <param-name>from</param-name>
-        <param-value>1721023048@qq.com</param-value>
+        <param-value>fexiyu@qq.com</param-value>
     </context-param>
     <context-param>
         <param-name>fromName</param-name>

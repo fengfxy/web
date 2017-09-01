@@ -23,23 +23,22 @@ public class NewsDelServlet extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-		NewsServices newsServices = new NewsServices();
-
 		try {
-			int newsId = Integer.parseInt(req.getParameter("id"));
-			if(newsServices.removeByNewsId(newsId)){
-				req.getSession().setAttribute("mess", new AdminMess("删除成功", "新闻数据删除", 1));
-			}else{
-				req.getSession().setAttribute("mess", new AdminMess("删除失败", "新闻数据删除", 2));
+			int id = Integer.parseInt(req.getParameter("id"));
+			NewsServices newsServices = new NewsServices();
+			if (newsServices.del(id)) {
+				req.getSession().setAttribute("mess", new AdminMess("新闻删除成功", "新闻删除", 1));
+			}
+			else {
+				req.getSession().setAttribute("mess", new AdminMess("新闻删除失败", "新闻删除", 2));
 			}
 		}
 		catch (Exception e) {
-
 			e.printStackTrace();
-			req.getSession().setAttribute("mess", new AdminMess("删除失败"+e.getMessage(), "新闻数据删除", 3));
+			req.getSession().setAttribute("mess", new AdminMess("新闻删除失败", "新闻删除", 3));
 		}
 		resp.sendRedirect(PathUtil.getBasePath(req, "admin/mess.jsp"));
+		
 	}
 
 	@Override

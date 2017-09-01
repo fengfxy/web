@@ -90,6 +90,57 @@
 	</delete>
 
 
+	<select id="selectByQuery" resultMap="BaseResultMap"
+		parameterType="com.fxy.beans.NewsQuery">
+
+		select
+		`news`.`id` AS `id`,
+		`news`.`title` AS `title`,
+		`news`.`author` AS
+		`author`,
+		`news`.`photo_a` AS `photo_a`,
+		`news`.`photo_b` AS `photo_b`,
+		`news`.`photo_c` AS `photo_c`,
+		`news`.`st` AS `st`,
+		`news`.`news_type_id` AS `news_type_id`,
+		`news`.`start_info` AS
+		`start_info`,
+		`news_type`.`name` AS `name`
+		from
+		`news` , `news_type`
+
+		<where>
+
+			`news`.`news_type_id` = `news_type`.`id`
+
+			<if test="title!=null and title!=''">
+				and title like concat(concat('%',#{title}),'%')
+			</if>
+
+			<if test="newsTypeId!=null and newsTypeId>0">
+				and news_type_id= #{newsTypeId}
+			</if>
+			<if test="stStart!=null and stStart!='' and stEnd!=null and stEnd!='' ">
+				and st between #{stStart} and #{stEnd}
+			</if>
+		</where>
+
+	</select>
+
+	<update id="updateByPhoto" parameterType="com.fxy.beans.News">
+		update news
+
+		set
+
+		photo_a = #{photoA,jdbcType=VARCHAR},
+
+		photo_b = #{photoB,jdbcType=VARCHAR},
+
+		photo_c = #{photoC,jdbcType=VARCHAR}
+
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+
 	<insert id="insert" parameterType="com.fxy.beans.News" useGeneratedKeys="true" keyProperty="id">
 		insert into news (id, title,
 		author,

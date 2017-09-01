@@ -12,6 +12,7 @@ import com.fxy.beans.Users;
 import com.fxy.services.UsersServices;
 import com.fxy.util.UUID.UUIDUtil;
 import com.fxy.util.encode.EncodeUtil;
+import com.fxy.util.log.LogUtil;
 import com.fxy.util.path.PathUtil;
 
 @WebServlet(name = "ResetUserPassWordServlet", urlPatterns = { "/servlet/ResetUserPassWordServlet.action" })
