@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>sssss</title>
+
+		<link href="css/bootstrap.min.css" rel="stylesheet" />
+		<link href="css/my.css" rel="stylesheet" />
+
+		<script src="js/jquery.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/my.js"></script>
+
+	</head>
+
+	<body>
+
+		<nav class="navbar navbar-default my-nav">
+			<div class="container">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+					<a class="navbar-brand" href="#">我的网站</a>
+				</div>
+
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav">
+						<li class="active"><a href="index.jsp">首页</a></li>
+						<li><a href="#">新闻信息</a></li>
+						<li><a href="#">我要提问</a></li>
+					</ul>
+					<form class="navbar-form navbar-left">
+						<div class="form-group">
+							<input type="text" class="form-control" placeholder="请输入关键字">
+						</div>
+						<button type="submit" class="btn btn-default">搜索</button>
+					</form>
+					<ul class="nav navbar-nav navbar-right">
+
+						<c:choose>
+
+							<c:when test="${sessionScope.Users==null }">
+								<li><a href="login.jsp">登录</a></li>
+								<li><a href="register.jsp">注册</a></li>
+							</c:when>
+							<c:when test="${sessionScope.Users!=null }">
+								<li> <a>欢迎：${sessionScope.Users.username }</a> </li>
+								<li><a href="#">管理</a></li>
+								<li><a href="<%=basePath %>LogoutServlet.action">注销</a></li>
+
+							</c:when>
+						</c:choose>
+
+					</ul>
+				</div>
+				<!-- /.navbar-collapse -->
+			</div>
+			<!-- /.container-fluid -->
+		</nav>
+
+		<div class="centent login-wrap">
+			<div class="sidebar">
+
+				<ul class="nav nav-sidebar-top">
+
+					<div class="list-group">
+						<img src="./img/sess.png" alt="..." class="img-circle">
+						<h3 align="center">用户名</h3>
+					</div>
+				</ul>
+
+				<ul class="nav nav-sidebar">
+					<li ${sessionScope.menu==1? "class='active'": "" }><a href="#">基本信息</a></li>
+				</ul>
+
+				<ul class="nav nav-sidebar">
+					<li ${sessionScope.menu==2? "class='active'": "" }><a href="#">设置头像</a></li>
+				</ul>
+
+				<ul class="nav nav-sidebar">
+					<li ${sessionScope.menu==3? "class='active'": "" }><a href="#">修改密码</a></li>
+				</ul>
+			</div>
+		
+			<div class="panel panel-primary login">
+				<div class="panel-heading" align="center"><h3>基本信息</h3></div>
+				<div class="panel-body">
+					<form class="form-horizontal" action="<%=basePath %>form/LoginServlet.action" method="post">
+						<div class="form-group">
+							<label for="inputText1" class="col-xs-3 control-label">用户名:</label>
+							<div class="col-xs-5">
+								<label name="username" class="form-control" id="inputText1" >${sessionScope.Users.username }</label>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="inputText1" class="col-xs-3 control-label">昵称:</label>
+							<div class="col-xs-5">
+								<input type="text" name="nick" class="form-control" id="inputText1" value="${sessionScope.Users.nick }" placeholder="请输入昵称">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="inputPassword1" class="col-xs-3 control-label">邮箱:</label>
+							<div class="col-xs-5">
+								<label name="email" class="form-control" id="inputPassword3">${sessionScope.Users.email }</label>
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<div class="col-xs-offset-3 col-xs-10">
+								<div class="row">
+									<div class="col-xs-3">
+										<button type="submit" class="btn btn-default">保存</button>
+									</div>
+									<div class="col-xs-3">
+										<a href="register.jsp" class="btn btn-default">注册</a>
+									</div>
+									
+								</div>
+
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		
+		</div>
+
+		<div class="footer">
+
+			<div class="container footer-menu">
+
+				<div class="row">
+					<div class="col-xs-6">
+						<p><img src="img/logo.png" /></p>
+						<p>
+							本网站所列开源项目的中文版文档全部由Bootstrap中文网成员翻译整理，并全部遵循 CC BY 3.0协议发布。
+						</p>
+					</div>
+
+					<div class="col-xs-6 footer-menu-right">
+						<div class="row">
+							<ul class="col-xs-3">
+								<li>关于</li>
+
+								<li>关于我们</li>
+								<li>广告合作</li>
+								<li>友情链接</li>
+								<li>招聘</li>
+							</ul>
+							<ul class="col-xs-3">
+								<li>联系方式</li>
+								<li>新浪微博</li>
+								<li>电子邮件</li>
+
+							</ul>
+
+							<ul class="col-xs-3">
+								<li>旗下网站</li>
+								<li>Laravel中文网</li>
+								<li>Ghost中国</li>
+
+							</ul>
+
+							<ul class="col-xs-3">
+								<li>赞助商</li>
+								<li>又拍云</li>
+
+							</ul>
+						</div>
+
+					</div>
+
+				</div>
+
+				<div class="row">
+					<div class="col-xs-12 footer-record">
+						<p align="center">
+							京ICP备11008151号&nbsp;|&nbsp;京公网安备11010802014853
+						</p>
+					</div>
+				</div>
+
+			</div>
+
+	</body>
+
+</html>

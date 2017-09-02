@@ -34,7 +34,7 @@ public class LoginServlet extends HttpServlet {
 			result = loginServices.Login(record);
 			if (result != null) {
 				LogUtil.log("登陆成功");
-				req.getSession().setAttribute("Users", record);
+				req.getSession().setAttribute("Users", result);
 				resp.sendRedirect(PathUtil.getBasePath(req,"index.jsp"));
 			}
 			else {

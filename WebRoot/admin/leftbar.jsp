@@ -8,11 +8,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!--左侧导航-->
 <div class="sidebar">
     <ul class="nav nav-sidebar">
-        <li ${sessionScope.menu==1?"class='active'":"" }><a href="<%=basePath%>/admin/newsTypeSelectServlet.action">新闻类型列表</a></li>
+        <li ${sessionScope.menu==1?"class='active'":"" }><a href="<%=basePath%>admin/newsTypeSelectServlet.action">新闻类型列表</a></li>
     </ul>
 
 	 <ul class="nav nav-sidebar">
-        <li ${sessionScope.menu==2?"class='active'":"" }><a href="<%=basePath%>/admin/NewsSelectServlet.action">新闻列表</a></li>
+        <li ${sessionScope.menu==2?"class='active'":"" }><a href="<%=basePath%>admin/NewsSelectServlet.action">新闻列表</a></li>
     </ul>
     
     <ul class="nav nav-sidebar">
@@ -21,16 +21,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 
     <ul class="nav nav-sidebar">
-        <li ${sessionScope.menu==4?"class='active'":"" }><a href="#">用户列表</a></li>
+        <li ${sessionScope.menu==4?"class='active'":"" }><a href="<%=basePath%>admin/UsersSelectServlet.action">用户列表</a></li>
     </ul>
 
 
     <ul class="nav nav-sidebar">
-        <li ${sessionScope.menu==5?"class='active'":"" }><a href="#">管理员密码修改</a></li>
+        <li ${sessionScope.menu==5?"class='active'":"" }><a href="<%=basePath%>admin/adminEditPassWord.action">管理员密码修改</a></li>
     </ul>
 
 	<ul class="nav nav-sidebar">
-       <li ${sessionScope.menu==6?"class='active'":"" }><a href="#">管理员退出</a></li>
+       <li ${sessionScope.menu==6?"class='active'":"" }><a href="<%=basePath%>admin/adminOut.action">管理员退出</a></li>
     </ul>
 </div>
 

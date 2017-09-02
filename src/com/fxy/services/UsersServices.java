@@ -15,11 +15,11 @@ import com.fxy.util.mybatis.MyBatisUtil;
 import com.fxy.util.path.PathUtil;
 
 public class UsersServices {
-	public ArrayList<Users> findByAll(){
+	public ArrayList<Users> findByAll() throws IOException{
 		ArrayList<Users> result=null;
-		
-		
-		
+		SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession();
+		UsersMapper usersMapper=sqlSession.getMapper(UsersMapper.class);
+		result=(ArrayList<Users>) usersMapper.selectByExample();
 		
 		return result;
 		

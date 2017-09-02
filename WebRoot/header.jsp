@@ -36,7 +36,7 @@
 					</c:when>
 					<c:when test="${sessionScope.Users!=null }">
 						<li> <a>欢迎：${sessionScope.Users.username }</a> </li>
-						<li><a href="#">管理</a></li>
+						<li><a href="user.jsp">管理</a></li>
 						<li><a href="<%=basePath %>LogoutServlet.action">注销</a></li>
 
 					</c:when>

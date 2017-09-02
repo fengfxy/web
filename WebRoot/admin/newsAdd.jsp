@@ -124,7 +124,7 @@
 				<div class="form-group">
 					<label class="col-xs-2 control-label">图片：</label>
 					<div class='input-group date col-xs-10'>
-						<input name="photoA" type="file" class="form-control"
+						<input name="photoA" type="file" class="control-label"
 							id="fileInput" /> <img id="fileImgA" src="holder.js/640x426"
 							style="width: 640px;height: 426px;vertical-align: bottom"
 							class="img-thumbnail"> <img id="fileImgB"
