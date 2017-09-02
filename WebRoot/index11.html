@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+
+		<link href="css/bootstrap.min.css" rel="stylesheet" />
+		<link href="css/my.css" rel="stylesheet" />
+
+		<script src="js/jquery.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/my.js"></script>
+	</head>
+
+	<body>
+
+		<nav class="navbar navbar-default my-nav">
+			<div class="container">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+					<a class="navbar-brand" href="#">我的网站</a>
+				</div>
+
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav">
+						<li class="active"><a href="index.jsp">首页</a></li>
+						<li><a href="#">新闻信息</a></li>
+						<li><a href="#">我要提问</a></li>
+					</ul>
+					<form class="navbar-form navbar-left">
+						<div class="form-group">
+							<input type="text" class="form-control" placeholder="请输入关键字">
+						</div>
+						<button type="submit" class="btn btn-default">搜索</button>
+					</form>
+					<ul class="nav navbar-nav navbar-right">
+
+						<c:choose>
+
+							<c:when test="${sessionScope.Users==null }">
+								<li><a href="login.jsp">登录</a></li>
+								<li><a href="register.jsp">注册</a></li>
+							</c:when>
+							<c:when test="${sessionScope.Users!=null }">
+								<li> <a>欢迎：${sessionScope.Users.username }</a> </li>
+								<li><a href="#">管理</a></li>
+								<li><a href="<%=basePath %>LogoutServlet.action">注销</a></li>
+
+							</c:when>
+						</c:choose>
+
+					</ul>
+				</div>
+				<!-- /.navbar-collapse -->
+			</div>
+			<!-- /.container-fluid -->
+		</nav>
+
+		<div class="centent">
+
+			<div class="span2" style="margin-left:0px;">
+				<div class="row-fluid">
+					<div class="well" style="font-size: 12px;">
+						<center>
+							<img class="img-circle" style="width: 80px;" src="http://www.leyu.net/api/avatar/show.php?username=t150428443445&amp;size=large">
+							<br> 150428443474
+						</center>
+						<div style="clear: both;"></div>
+						<div style="margin-top:20px">
+							<b class="tit-summary">个人资料</b>
+							<ul class="y2-0325-ul1 y2-bg2 y2-bd1 y2-0325-ul1-n">
+								<li class="on"><a href="edit.php?action=info" id="edit">基本信息</a></li>
+								<li class=""><a href="avatar.php" id="avatar">设置头像</a></li>
+								<li class=""><a href="edit.php?action=key" id="mima">密码管理</a></li>
+							</ul>
+						</div>
+						
+						
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+
+	</body>
+
+</html>
