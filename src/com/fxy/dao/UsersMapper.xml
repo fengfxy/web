@@ -12,6 +12,11 @@
 		<result column="email" jdbcType="VARCHAR" property="email" />
 		<result column="verification" jdbcType="VARCHAR" property="verification" />
 	</resultMap>
+	<select id="selectByExample" resultMap="BaseResultMap"
+		parameterType="com.fxy.beans.Users">
+		select * from users
+	</select>
+	
 
 	<select id="selectByUsernameAndPassword" resultMap="BaseResultMap"
 		parameterType="com.fxy.beans.Users">
@@ -56,6 +61,14 @@
 		delete from users
 		where id = #{id,jdbcType=INTEGER}
 	</delete>
+	
+	<delete id="deleteByDate">
+		delete from users 
+		where st &lt; date_sub(now(),interval 2 HOUR) 
+		and state=0
+	</delete>
+	
+	
 	<insert id="insert" parameterType="com.fxy.beans.Users">
 		insert into users (id, username, password,
 		st, state, nick, photo,

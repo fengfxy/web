@@ -1,5 +1,7 @@
 package com.fxy.listener;
 
+import java.util.ArrayList;
+
 import javax.servlet.annotation.WebListener;
 import javax.servlet.http.HttpSessionActivationListener;
 import javax.servlet.http.HttpSessionAttributeListener;
@@ -8,6 +10,8 @@ import javax.servlet.http.HttpSessionBindingListener;
 import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.HttpSessionListener;
 
+import com.fxy.beans.News;
+import com.fxy.services.NewsServices;
 import com.fxy.util.log.LogUtil;
 
 @WebListener
@@ -17,6 +21,17 @@ public class SessionListener implements HttpSessionListener, HttpSessionAttribut
 	@Override
 	public void sessionCreated(HttpSessionEvent se) {
 		LogUtil.log("*******************网页已打开*********************");
+		NewsServices newsServices = new NewsServices();
+		try {
+			ArrayList<News> news = newsServices.findByAll();
+			se.getSession().setAttribute("viewNews", news);
+			LogUtil.log("*******************viewNews已设置*********************");
+		}
+		catch (Exception e) {
+
+			e.printStackTrace();
+			LogUtil.log("*******************获取数据失败*********************");
+		}
 		
 	}
 

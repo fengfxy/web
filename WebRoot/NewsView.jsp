@@ -11,7 +11,7 @@
 <head>
 <base href="<%=basePath%>">
 
-<title>新闻首页</title>
+<title>新闻信息</title>
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="cache-control" content="no-cache">
 <meta http-equiv="expires" content="0">
@@ -23,13 +23,13 @@
 <body>
 
 	<jsp:include page="header.jsp"></jsp:include>
-	<jsp:include page="jumbotron.jsp"></jsp:include>
+	<jsp:include page="shuffling.jsp"></jsp:include>
 
 
 	<div class="centent">
 
 		<div class="row">
-			<c:forEach var="item" items="${sessionScope.viewNews }" end="7">
+			<c:forEach var="item" items="${sessionScope.viewNews }">
 				<div class="col-xs-3">
 					<div class="thumbnail">
 						<img src="<%=basePath%>admin/upload/${item.photoB}" alt="网络似乎有点问题" style="height: 200px; width: 100%; display: block;">

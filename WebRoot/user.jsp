@@ -38,6 +38,7 @@
 					action="<%=basePath%>serlvet/UsersInfoEditServlet.action" method="post">
 					<div class="form-group">
 					<input name="id"  value="${Users.id}" type='hidden' />
+					<input name="reqType"  value="修改昵称" type='hidden' />
 						<label for="inputText1" class="col-xs-3 control-label">用户名:</label>
 						<div class="col-xs-5">
 							<label name="username" class="form-control" id="inputText1">${sessionScope.Users.username }</label>

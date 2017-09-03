@@ -42,12 +42,13 @@
 					<div class="form-group">
 						<label class="col-xs-2 control-label">头像：</label>
 						<input name="id"  value="${Users.id}" type='hidden' />
+						<input name="reqType"  value="修改头像" type='hidden' />
 						<div class='input-group date col-xs-6'>
 							<input name="photo" type="file" class="form-control"
 								id="fileInput" /> <br>
 							<br>
 							<br>
-							<br> <img id="fileImg" src="<%=basePath%>admin/upload/${Users.photo}"
+							<br> <img id="fileImg" src="holder.js/240x170"
 								style="width: 240px;height: 170px;vertical-align: bottom"
 								class="img-thumbnail">
 						</div>
@@ -101,9 +102,7 @@
             console.log(this.files);
             console.log(this.files[0]);
             var url = getObjectURL(this.files[0]);
-            $('#fileImgA').attr('src', url);
-            $('#fileImgB').attr('src', url);
-            $('#fileImgC').attr('src', url);
+            $('#fileImg').attr('src', url);
 
         });
 

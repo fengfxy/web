@@ -8,11 +8,9 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.fxy.beans.Users;
 import com.fxy.dao.UsersMapper;
-import com.fxy.util.encode.EncodeUtil;
 import com.fxy.util.mail.MailUtil;
 import com.fxy.util.mail.SendMailData;
 import com.fxy.util.mybatis.MyBatisUtil;
-import com.fxy.util.path.PathUtil;
 
 public class UsersServices {
 	public ArrayList<Users> findByAll() throws IOException{
@@ -20,6 +18,17 @@ public class UsersServices {
 		SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession();
 		UsersMapper usersMapper=sqlSession.getMapper(UsersMapper.class);
 		result=(ArrayList<Users>) usersMapper.selectByExample();
+		
+		return result;
+		
+	}
+	
+	public Users findById(Integer id) throws IOException{
+		Users result=null;
+		SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession();
+		UsersMapper usersMapper=sqlSession.getMapper(UsersMapper.class);
+		result=usersMapper.selectByPrimaryKey(id);
+		sqlSession.close();
 		
 		return result;
 		
@@ -99,6 +108,17 @@ public class UsersServices {
 		if(usersMapper.updateByPrimaryKey(user)>0){
 			result=true;
 		}
+		sqlSession.commit();
+		sqlSession.close();
+		return result;
+		
+	}
+	
+	public int rmoveDate() throws IOException{
+		int result=0;
+		SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession(false);
+		UsersMapper usersMapper=sqlSession.getMapper(UsersMapper.class);
+		result=usersMapper.deleteByDate();
 		sqlSession.commit();
 		sqlSession.close();
 		return result;

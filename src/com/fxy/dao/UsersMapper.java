@@ -7,7 +7,7 @@ import com.fxy.beans.Users;
 
 public interface UsersMapper {
     int deleteByPrimaryKey(Integer id);
-
+    int deleteByDate();
     int insert(Users record);
 
     List<Users> selectByExample();

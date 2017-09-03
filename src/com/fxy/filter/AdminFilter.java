@@ -31,7 +31,7 @@ public class AdminFilter implements Filter{
 			throws IOException, ServletException {
 		HttpServletRequest httpServletRequest=(HttpServletRequest) request;
 		HttpServletResponse httpServletResponse =(HttpServletResponse) response;
-		if(httpServletRequest.getSession().getAttribute("Admin")!=null){
+		if(httpServletRequest.getSession().getAttribute("Admin")!=null||httpServletRequest.getRequestURL().equals("http://localhost:8080/Profxy2017/admin/upload")){
 			chain.doFilter(request, response);
 			
 		}else{

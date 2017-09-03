@@ -11,24 +11,24 @@
 	<ul class="nav nav-sidebar-top">
 
 		<div class="list-group">
-			<img src="./img/sess.png" alt="..." class="img-circle">
-			<h3 align="center">用户名</h3>
+			<img src="<%=basePath%>userPhoto/${Users.photo}" width="60px" height="60px" class="img-circle">
+			<h3 align="center">${sessionScope.Users.username }</h3>
 		</div>
 	</ul>
 
 	<ul class="nav nav-sidebar">
-		<li ${sessionScope.menu==1? "class='active'": "" }><a
-			href="<%=basePath%>user.jsp">基本信息</a></li>
+		<li ${sessionScope.menu==11? "class='active'": "" }><a
+			href="<%=basePath%>UsersInfoEditBeforeServlet.action?id=${Users.id}&reqType=q">基本信息</a></li>
 	</ul>
 
 	<ul class="nav nav-sidebar">
-		<li ${sessionScope.menu==2? "class='active'": "" }><a
-			href="<%=basePath%>userPhoto.jsp">设置头像</a></li>
+		<li ${sessionScope.menu==12? "class='active'": "" }><a
+			href="<%=basePath%>UsersInfoEditBeforeServlet.action?id=${Users.id}&reqType=w">设置头像</a></li>
 	</ul>
 
 	<ul class="nav nav-sidebar">
-		<li ${sessionScope.menu==3? "class='active'": "" }><a
-			href="<%=basePath%>userPassWord.jsp">修改密码</a></li>
+		<li ${sessionScope.menu==13? "class='active'": "" }><a
+			href="<%=basePath%>UsersInfoEditBeforeServlet.action?id=${Users.id}&reqType=r">修改密码</a></li>
 	</ul>
 </div>
 

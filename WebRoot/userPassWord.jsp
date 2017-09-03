@@ -36,10 +36,11 @@
 			</div>
 			<div class="panel-body">
 				<form class="form-horizontal" id="from1"
-					action="<%=basePath%>servlet/ResetUserPassWordServlet.action"
+					action="<%=basePath%>serlvet/UsersInfoEditServlet.action"
 					method="post">
 					<div class="form-group">
 					<input name="id"  value="${Users.id}" type='hidden' />
+					<input name="reqType"  value="修改密码" type='hidden' />
 						<label for="inputPassword1" class="col-xs-3 control-label">新密码:</label>
 						<div class="col-xs-5">
 							<input type="password" class="form-control" id="inputPassword1"

@@ -17,15 +17,17 @@
 			id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
 				<li class="active"><a href="index.jsp">首页</a></li>
-				<li><a href="#">新闻信息</a></li>
-				<li><a href="#">我要提问</a></li>
+				<li><a href="NewsView.jsp">新闻信息</a></li>
+				
 			</ul>
-			<form class="navbar-form navbar-left">
+			<form class="navbar-form navbar-left" action="<%=basePath%>NewsQueryServlet.action" method="post">
 				<div class="form-group">
-					<input type="text" class="form-control" placeholder="请输入关键字">
+					<input type="text" name="newsInfo" class="form-control" placeholder="请输入关键字">
 				</div>
 				<button type="submit" class="btn btn-default">搜索</button>
 			</form>
+			
+			
 			<ul class="nav navbar-nav navbar-right">
 
 				<c:choose>
@@ -36,7 +38,7 @@
 					</c:when>
 					<c:when test="${sessionScope.Users!=null }">
 						<li> <a>欢迎：${sessionScope.Users.username }</a> </li>
-						<li><a href="user.jsp">管理</a></li>
+						<li><a href="<%=basePath%>UsersInfoEditBeforeServlet.action?id=${Users.id}&reqType=q">管理</a></li>
 						<li><a href="<%=basePath %>LogoutServlet.action">注销</a></li>
 
 					</c:when>
