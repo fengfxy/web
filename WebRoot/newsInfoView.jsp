@@ -30,8 +30,8 @@
 
 		<!--标题-->
 		<div class="page-header" style="margin-top: 0px!important;">
-			<h1>新闻内容
-				<small>新闻内容</small>
+			<h1>${news.title }
+				
 			</h1>
 		</div>
 
@@ -40,7 +40,6 @@
 
 
 			<div class="col-xs-6">
-				<h1>${news.title }</h1>
 				<div>
 					<span>作者：${news.author }</span> <span>日期：${news.st }</span><span>类型：${news.newsType.name }</span>
 				</div>

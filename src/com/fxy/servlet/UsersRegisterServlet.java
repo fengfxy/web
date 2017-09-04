@@ -15,6 +15,7 @@ import com.fxy.services.UsersServices;
 import com.fxy.util.UUID.UUIDUtil;
 import com.fxy.util.encode.EncodeUtil;
 import com.fxy.util.kaptcha.KaptchaUtil;
+import com.fxy.util.log.LogUtil;
 import com.fxy.util.path.PathUtil;
 
 @WebServlet(
@@ -24,7 +25,7 @@ import com.fxy.util.path.PathUtil;
 
 public class UsersRegisterServlet extends HttpServlet{
 	int timeGap = 2;
-	Long currentTime = new Date().getTime();
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String kaptcha = req.getParameter("Kaptcha");
@@ -50,7 +51,7 @@ public class UsersRegisterServlet extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		UsersServices usersServices=new UsersServices();
-		
+		Long currentTime = new Date().getTime();
 		String userName = req.getParameter("userName");
         String userPassWord = req.getParameter("userPassWord");
         String userEmail = req.getParameter("userEmail");
@@ -91,6 +92,8 @@ public class UsersRegisterServlet extends HttpServlet{
         	user.setUsername(userName);
         	user.setPassword(EncodeUtil.getMD5(userPassWord));
         	user.setSt(String.valueOf(currentTime));
+        	LogUtil.log(String.valueOf(currentTime));
+        	LogUtil.log(currentTime+"");
         	user.setState(0);
         	user.setEmail(userEmail);
         	user.setVerification(verification);

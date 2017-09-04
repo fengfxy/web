@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.fxy.beans.Admin;
 import com.fxy.beans.AdminMess;
 import com.fxy.services.AdminLoginServices;
+import com.fxy.util.log.LogUtil;
 import com.fxy.util.path.PathUtil;
 
 @WebServlet(
@@ -31,7 +32,8 @@ public class AdminPassWordEditServlet extends HttpServlet{
 				String adminPassWord = req.getParameter("adminPassWord");
 				if(!adminPassWord.equals("")){
 					admin.setPassword(adminPassWord);
-					
+					LogUtil.log(adminPassWord);
+					LogUtil.log(admin.getPassword());
 					if(adminLoginServices.edit(admin)){
 						req.getSession().setAttribute("Admin", admin);
 						req.getSession().setAttribute("mess", new AdminMess("修改成功", "管理员密码修改", 1));

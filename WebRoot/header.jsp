@@ -9,7 +9,7 @@
 	<div class="container">
 		<!-- Brand and toggle get grouped for better mobile display -->
 		<div class="navbar-header">
-			<a class="navbar-brand" href="#">我的网站</a>
+			<a class="navbar-brand" href="">我的网站</a>
 		</div>
 
 		<!-- Collect the nav links, forms, and other content for toggling -->
@@ -37,6 +37,7 @@
 						<li><a href="register.jsp">注册</a></li>
 					</c:when>
 					<c:when test="${sessionScope.Users!=null }">
+						<li><img src="<%=basePath%>userPhoto/${Users.photo}" width="50px" height="50px" class="img-circle"></li>
 						<li> <a>欢迎：${sessionScope.Users.username }</a> </li>
 						<li><a href="<%=basePath%>UsersInfoEditBeforeServlet.action?id=${Users.id}&reqType=q">管理</a></li>
 						<li><a href="<%=basePath %>LogoutServlet.action">注销</a></li>

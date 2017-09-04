@@ -66,31 +66,54 @@ public class UsersInfoEditServlet extends HttpServlet {
 				} else {
 					try {
 						String photoANewFileName = UploadFileUtil.upload(savePath, part);
-						String photo = users.getPhoto().substring(1);
-						String fA = savePath + File.separator + "A"+ photo;
-						String fB = savePath + File.separator + "B"+ photo;
-						String fC = savePath + File.separator + "C"+ photo;
-						File fileA = new File(fA);
-						File fileB = new File(fB);
-						File fileC = new File(fC);
-						// 删除图片成功
-						if (fileA.exists()) {
-							fileA.delete();
-						}
-						if (fileC.exists()) {
-							fileC.delete();
-						}
-						if (fileB.exists()) {
-							fileB.delete();
+						LogUtil.log(users.getPhoto());
+						LogUtil.log(users.getUsername());
+						if(users.getPhoto()!=null){
+							if(!users.getPhoto().equals("")){
+								
+								String photo = users.getPhoto().substring(1);
+								String fA = savePath + File.separator + "A"+ photo;
+								String fB = savePath + File.separator + "B"+ photo;
+								String fC = savePath + File.separator + "C"+ photo;
+								File fileA = new File(fA);
+								File fileB = new File(fB);
+								File fileC = new File(fC);
+								// 删除图片成功
+								if (fileA.exists()) {
+									fileA.delete();
+								}
+								if (fileC.exists()) {
+									fileC.delete();
+								}
+								if (fileB.exists()) {
+									fileB.delete();
+								}
+								users.setPhoto("B" + photoANewFileName);
+								if (!usersServices.edit(users)) {
+									messStr = "图片上传失败，请稍后再试";
+								}else{
+									messStr="OK";
+									
+								}
+							}else{
+								users.setPhoto("B" + photoANewFileName);
+								if (!usersServices.edit(users)) {
+									messStr = "图片上传失败，请稍后再试";
+								}else{
+									messStr="OK";
+									
+								}
+							}
+						}else{
+							users.setPhoto("B" + photoANewFileName);
+							if (!usersServices.edit(users)) {
+								messStr = "图片上传失败，请稍后再试";
+							}else{
+								messStr="OK";
+								
+							}
 						}
 						
-						users.setPhoto("B" + photoANewFileName);
-						if (!usersServices.edit(users)) {
-							messStr = "图片上传失败，请稍后再试";
-						}else{
-							messStr="OK";
-							
-						}
 					} catch (Exception e) {
 						e.printStackTrace();
 						messStr = "图片上传失败，请稍后再试";

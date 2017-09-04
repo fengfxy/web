@@ -11,19 +11,26 @@
 	<!-- 轮播（Carousel）指标 -->
 	<ol class="carousel-indicators">
 		<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-		<li data-target="#myCarousel" data-slide-to="1"></li>
-		<li data-target="#myCarousel" data-slide-to="2"></li>
+		<c:forEach var="items1" items="${sessionScope.viewNews }" begin="1"
+			end="7">
+			<li data-target="#myCarousel" data-slide-to="${items1 }"></li>
+		</c:forEach>
 	</ol>
 	<!-- 轮播（Carousel）项目 -->
 	<div class="carousel-inner">
 		<div class="item active">
-			<img src="<%=basePath%>admin/upload/${sessionScope.viewNews[0].photoA }" alt="网络似乎不给力"
-				style="height: 200px; width: 100%; display: block;">
+			<img
+				src="<%=basePath%>admin/upload/${sessionScope.viewNews[0].photoA }"
+				alt="网络似乎不给力" style="height: 200px; width: 100%; display: block;">
 		</div>
-		<c:forEach var="items" items="${sessionScope.viewNews }" end="7">
+		<c:forEach var="items" items="${sessionScope.viewNews }" begin="1"
+			end="7">
 			<div class="item">
-				<img src="<%=basePath%>admin/upload/${items.photoA}" alt="网络似乎不给力"
+				<a href="<%=basePath%>NewsInfoViewServlet.action?id=${items.id }">
+					<img src="<%=basePath%>admin/upload/${items.photoA}" alt="网络似乎不给力"
 					style="height: 200px; width: 100%; display: block;">
+				</a>
+
 			</div>
 		</c:forEach>
 	</div>
@@ -38,17 +45,11 @@
 			$("#myCarousel").carousel('cycle');
 		});
 		// 循环轮播到某个特定的帧 
-
-		$(".slide-one").click(function() {
-			$("#myCarousel").carousel(0);
-		});
-		$(".slide-one").click(function() {
-			$("#myCarousel").carousel(1);
-		});
-		$(".slide-one").click(function() {
-			$("#myCarousel").carousel(2);
-		});
-
+		for (var i=0;i<8;i++){
+			$(".slide-one").click(function() {
+				$("#myCarousel").carousel(i);
+			});
+		}
 
 	});
 </script>

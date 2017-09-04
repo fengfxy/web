@@ -7,11 +7,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.Part;
 
 import com.fxy.beans.Users;
 import com.fxy.services.UsersServices;
-import com.fxy.util.encode.EncodeUtil;
 import com.fxy.util.path.PathUtil;
 
 @WebServlet(

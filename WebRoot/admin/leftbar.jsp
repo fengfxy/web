@@ -26,7 +26,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 
     <ul class="nav nav-sidebar">
-        <li ${sessionScope.menu==5?"class='active'":"" }><a href="<%=basePath%>admin/AdminPassWordEditServlet.action">管理员密码修改</a></li>
+        <li ${sessionScope.menu==5?"class='active'":"" }><a href="<%=basePath%>admin/AdminPassWordEdit.jsp">管理员密码修改</a></li>
     </ul>
 
 	<ul class="nav nav-sidebar">

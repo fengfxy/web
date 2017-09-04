@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.fxy.util.log.LogUtil;
 import com.fxy.util.path.PathUtil;
 
 @WebFilter(
@@ -31,7 +32,9 @@ public class AdminFilter implements Filter{
 			throws IOException, ServletException {
 		HttpServletRequest httpServletRequest=(HttpServletRequest) request;
 		HttpServletResponse httpServletResponse =(HttpServletResponse) response;
-		if(httpServletRequest.getSession().getAttribute("Admin")!=null||httpServletRequest.getRequestURL().equals("http://localhost:8080/Profxy2017/admin/upload")){
+		LogUtil.log("ContextPath:"+httpServletRequest.getContextPath());
+		LogUtil.log("RequestURI:"+httpServletRequest.getRequestURI());
+		if(httpServletRequest.getSession().getAttribute("Admin")!=null||httpServletRequest.getRequestURL().equals("/Profxy2017/admin/upload/*")){
 			chain.doFilter(request, response);
 			
 		}else{

@@ -52,7 +52,7 @@ public class AdminLoginServices {
 		AdminMapper adminMapper = sqlSession.getMapper(AdminMapper.class);
 
 		if(adminMapper.updateByPrimaryKey(admin)>0){
-			return true;
+			flag= true;
 		}
 		sqlSession.commit();
 		sqlSession.close();
