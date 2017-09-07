@@ -1,2 +1,6 @@
 /com/
 /A.class
+/generator.properties
+/generatorConfig.xml
+/log4j2.xml
+/mybatis-config.xml
